@@ -1,0 +1,58 @@
+[
+  {
+    "property_id": "PROP-101",
+    "address": "950 Summit Ave, Seattle, WA",
+    "price": 650000.00,
+    "raw_description": "Immaculate 4-plex in highly desirable Capitol Hill. Recent upgrades to plumbing and electrical. Cap rate approx 8%. Fully occupied with long-term tenants paying market rate.",
+    "link": "http://zillow-fake.com/prop-101"
+  },
+  {
+    "property_id": "PROP-102",
+    "address": "12 Swamp Rd, Miami, FL",
+    "price": 200000.00,
+    "raw_description": "Large lot but significant structural damage to foundation visible. Located in high-risk flood zone (Zone AE). FEMA insurance required. Previous mold remediation records available.",
+    "link": "http://zillow-fake.com/prop-102"
+  },
+  {
+    "property_id": "PROP-103",
+    "address": "45 Main St, Detroit, MI",
+    "price": 85000.00,
+    "raw_description": "Incredible price for this brick duplex. Needs cosmetic work (paint/carpet). CAUTION: One tenant currently undergoing eviction process for non-payment (6 months behind). Roof age 15 years.",
+    "link": "http://zillow-fake.com/prop-103"
+  },
+  {
+    "property_id": "PROP-104",
+    "address": "888 Beverly Dr, Los Angeles, CA",
+    "price": 2100000.00,
+    "raw_description": "Classic Spanish style estate. Dated interior (1970s) but huge potential. Comps in area selling for $3.5M+. Large lot with pool allowance. Perfect luxury flip opportunity.",
+    "link": "http://zillow-fake.com/prop-104"
+  },
+  {
+    "property_id": "PROP-105",
+    "address": "200 Industrial Pkwy, Cleveland, OH",
+    "price": 55000.00,
+    "raw_description": "Solid C-class rental property. Section 8 approved tenants in place. steady high cash flow. ROI projected 12%+. Functional systems, older furnace.",
+    "link": "http://zillow-fake.com/prop-105"
+  },
+  {
+    "property_id": "PROP-106",
+    "address": "55 Maple Ln, Austin, TX",
+    "price": 425000.00,
+    "raw_description": "Perfect starter home in booming suburb. Great school district (rated 9/10). New HVAC installed 2024. Turnkey condition, ready for immediate move-in or rental.",
+    "link": "http://zillow-fake.com/prop-106"
+  },
+  {
+    "property_id": "PROP-107",
+    "address": "99 Commercial St, Boston, MA",
+    "price": 1500000.00,
+    "raw_description": "Mixed use building downtown. ATTENTION: Currently zoned industrial/warehouse, requires variance for residential conversion. City has denied previous applications. Historic facade must be preserved.",
+    "link": "http://zillow-fake.com/prop-107"
+  },
+  {
+    "property_id": "PROP-108",
+    "address": "777 Chemical Way, Newark, NJ",
+    "price": 250000.00,
+    "raw_description": "Multi-family near transit hub. Good fundamentals but located next to former dry cleaner site. Phase 1 environmental study recommended due to potential soil contamination. Price reflects risk.",
+    "link": "http://zillow-fake.com/prop-108"
+  }
+]

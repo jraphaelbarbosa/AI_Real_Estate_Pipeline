@@ -46,7 +46,11 @@ class RealEstateAnalyzer:
         system_msg = (
             "You are a Senior Real Estate Underwriter. "
             "Analyze the provided property data for investment viability in the Dallas market. "
-            "Be strict and critical."
+            "Be strict and critical. "
+            "Financial Rules: "
+            "1. ARV (After Repair Value) MUST be exactly 1.3 * Price. "
+            "2. Renovation Cost MUST be exactly 0.15 * Price. "
+            "Output these values precisely."
         )
         
         prompt = ChatPromptTemplate.from_messages([
@@ -86,5 +90,7 @@ class RealEstateAnalyzer:
             viability_score=85,
             summary="Mock analysis for testing Monday integration. Property appears undervalued with good rental potential.",
             risk_factors=["High foundation repair costs possible", "Flood zone proximity"],
-            recommended_action=ActionEnum.BUY
+            recommended_action=ActionEnum.BUY,
+            arv=350000.00,
+            renovation_cost=45000.00
         )

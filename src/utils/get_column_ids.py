@@ -15,7 +15,7 @@ def get_column_ids():
         print("Error: MONDAY_API_KEY not found in environment variables.")
         return
 
-    board_id = 18395684174
+    board_id = 18396329631
     query = f"""
     query {{
         boards (ids: {board_id}) {{

@@ -4,6 +4,7 @@ import requests
 from src.config import settings
 from src.utils.logger import get_logger
 from src.domain.schemas import PropertyInput, PropertyAnalysis
+from src.utils.geocoder import get_coordinates
 
 class MondayClient:
     def __init__(self):
@@ -11,7 +12,7 @@ class MondayClient:
         self.api_url = "https://api.monday.com/v2"
         self.logger = get_logger("monday_client")
 
-    def create_item(self, prop: PropertyInput, analysis: PropertyAnalysis, board_id: int = 18395684174) -> bool:
+    def create_item(self, prop: PropertyInput, analysis: PropertyAnalysis, board_id: int = 18396329631) -> bool:
         """
         Creates an item on the Monday board with the analysis results.
         If no API key is present, it logs the mutation (Dry Run).
@@ -24,30 +25,7 @@ class MondayClient:
 
         # 2. Prepare Column Values (JSON String)
         # Using JSON dump for the entire column_values object is safer and cleaner
-        column_values = {
-            "numbers": prop.price,  # Price
-            "numbers__1": analysis.viability_score, # Score. NOTE: Double underscore might be needed depending on column ID (checking standard format). Plan said "numbers_1", sticking to plan but careful.
-            # Assuming "numbers_1" from plan, but Monday often uses generated IDs. 
-            # I will use "numbers_1" as per user request, but usually it's best to verify graphQL IDs.
-            # Wait, the user plan says: "numbers_1" (Score). I will stick to that.
-            "status": {"label": analysis.recommended_action.value}, # Status columns usually expect an index or label
-            "long_text": analysis.summary,
-            "link": {"url": str(prop.link), "text": "View Property"}
-        }
-
-        # Monday requires column_values to be a JSON string *inside* the mutation variables or string.
-        # It's cleanest to pass it as a GraphQL variable, but the user plan requested "Construct Mutation".
-        # I will construct the mutation string with f-strings as requested, ensuring column_values is a JSON string.
-        
-        # Correction on Column IDs based on common defaults or user plan:
-        # Plan: "numbers" -> logic: prop.price
-        # Plan: "numbers_1" -> logic: analysis.viability_score
-        # Plan: "status" -> logic: analysis.recommended_action
-        # Plan: "long_text" -> logic: analysis.summary
-        # Plan: "link" -> logic: prop.link
-        
-        # Let's adjust column_values for the specific Monday format (it expects value to be jsonified string sometimes or just object if using vars)
-        # For raw string mutation interpolation:
+        # Maps keys to placeholders for now. Will be updated with real IDs after discovery.
         
         # Map ActionEnum to Monday Status Labels (Case Sensitive)
         status_map = {
@@ -58,11 +36,14 @@ class MondayClient:
         monday_status = status_map.get(analysis.recommended_action.value, "New")
 
         gql_column_values = json.dumps({
-            "numeric_mkzmngbz": str(prop.price),       # Price
-            "numeric_mkzmg31g": analysis.viability_score, # AI Score
-            "project_status": monday_status,           # Status
-            "text_mkzmgh4q": analysis.summary,         # AI Summary
-            "link_mkzmf7yb": {"url": str(prop.link), "text": "Project Link"} # Link
+            "numeric_mkzsm1z3": str(prop.price),       # Asking Price
+            "numeric_mkzshdqc": str(analysis.arv),     # Calculated ARV
+            "numeric_mkzsa9d": str(analysis.renovation_cost), # Est. Reno Cost
+            "numeric_mkzs5evh": analysis.viability_score, # Viability Score
+            "color_mkzs8dn0": monday_status,           # AI Decision - Buy/Pass
+            "long_text_mkzsthq0": analysis.summary,    # Executive Summary
+            "link_mkzsdbc0": {"url": str(prop.link), "text": "Zillow Listing"}, # Zillow Listing
+            "location_mkzsssmr": get_coordinates(prop.address) # Location (Lat/Lng/Address)
         }).replace('"', '\\"') # Escape quotes for inclusion in the mutation string
 
         mutation = f"""

@@ -20,3 +20,5 @@ class PropertyAnalysis(BaseModel):
     summary: str = Field(..., description="Executive summary, max 2 sentences")
     risk_factors: List[str]
     recommended_action: ActionEnum
+    arv: Decimal = Field(..., description="After Repair Value")
+    renovation_cost: Decimal = Field(..., description="Estimated Renovation Cost")

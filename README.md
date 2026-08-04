@@ -1,5 +1,7 @@
 # AI Real Estate Pipeline (Enterprise Architecture)
 
+> **[ 🇧🇷 Ler em Português ](README.pt-br.md)**
+
 ## Executive Summary
 The **AI Real Estate Pipeline** is a robust, end-to-end autonomous agent designed to revolutionize property underwriting. By orchestrating a seamless flow from raw data ingestion to advanced geospatial visualization, functionality extends beyond simple analysis. The system leverages **GPT-4** for sophisticated risk assessment, **Geopy** for precise location intelligence, and **Monday.com Enterprise** for high-fidelity visualization. This solution eliminates manual overhead, delivering instant, actionable intelligence for high-volume real estate investment.
 
@@ -29,7 +31,7 @@ The **AI Real Estate Pipeline** is a robust, end-to-end autonomous agent designe
 
 1.  **Clone the Repository**
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/jraphaelbarbosa/AI_Real_Estate_Pipeline.git
     cd AI_Real_Estate_Pipeline
     ```
 
